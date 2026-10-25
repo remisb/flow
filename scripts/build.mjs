@@ -9,6 +9,6 @@ await rm(path.join(root,'dist'),{recursive:true,force:true});await mkdir(path.jo
 const names=(await readdir(path.join(root,'dist'))).filter(n=>n!=='sw.js'&&/\.(js|css)$/.test(n));
 for(const file of await files(path.join(root,'dist'))){if(!/\.(html|js)$/.test(file)||file.endsWith('/sw.js'))continue;let text=await readFile(file,'utf8');for(const name of names)text=text.replaceAll('./'+name,'./'+name.replace(/\.(js|css)$/,'.'+revision+'.$1'));await writeFile(file,text);}
 for(const name of names){await cp(path.join(root,'dist',name),path.join(root,'dist',name.replace(/\.(js|css)$/,'.'+revision+'.$1')));await rm(path.join(root,'dist',name));}
-const assets=(await files(path.join(root,'dist'))).filter(f=>!f.endsWith('/sw.js')).map(f=>'./'+path.relative(path.join(root,'dist'),f).split(path.sep).join('/'));
+const assets=(await files(path.join(root,'dist'))).filter(f=>!f.endsWith('/sw.js')).map(f=>'./'+path.relative(path.join(root,'dist'),f).split(path.sep).join('/')).map(p=>p==='./index.html'?'./':p);
 let sw=await readFile(path.join(source,'sw.js'),'utf8');sw=sw.replace('__REVISION__',revision).replace('__ASSETS__',JSON.stringify(assets));await writeFile(path.join(root,'dist/sw.js'),sw);
 console.log(`Built Flow ${revision}: ${assets.length} offline assets.`);

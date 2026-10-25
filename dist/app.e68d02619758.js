@@ -1,6 +1,6 @@
-import {DEFAULT_SETTINGS,MAX_TEXT,MAX_DOCUMENTS,checkLibrarySize,wordsOf,graphemes,splitWord,duration,remainingTimes,normalizeSettings,validateBackup,mergeDocuments,decodeLibrary} from './core.22205e1801c9.js';
-import {createStorage} from './storage.22205e1801c9.js';
-import {sample} from './sample.22205e1801c9.js';
+import {DEFAULT_SETTINGS,MAX_TEXT,MAX_DOCUMENTS,checkLibrarySize,wordsOf,graphemes,splitWord,duration,remainingTimes,normalizeSettings,validateBackup,mergeDocuments,decodeLibrary} from './core.e68d02619758.js';
+import {createStorage} from './storage.e68d02619758.js';
+import {sample} from './sample.e68d02619758.js';
 const $=id=>document.getElementById(id);
 const storage=createStorage();
 let state={version:1,documents:[],activeId:null,settings:{...DEFAULT_SETTINGS}};
