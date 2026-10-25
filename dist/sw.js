@@ -1,6 +1,6 @@
 /* Cache only the public app shell, never sign-in routes, user data, or third-party responses. */
-const CACHE='flow-shell-f67ac1bde24c';
-const ASSETS=["./app.f67ac1bde24c.js","./core.f67ac1bde24c.js","./icons/apple-touch-icon.png","./icons/icon-192.png","./icons/icon-512.png","./icons/icon.svg","./icons/maskable-512.png","./index.html","./manifest.webmanifest","./sample.f67ac1bde24c.js","./storage.f67ac1bde24c.js","./styles.f67ac1bde24c.css"];
+const CACHE='flow-shell-5e4913e29dee';
+const ASSETS=["./app.5e4913e29dee.js","./core.5e4913e29dee.js","./icons/apple-touch-icon.png","./icons/icon-192.png","./icons/icon-512.png","./icons/icon.svg","./icons/maskable-512.png","./index.html","./manifest.webmanifest","./sample.5e4913e29dee.js","./storage.5e4913e29dee.js","./styles.5e4913e29dee.css"];
 const ROOT=new URL('./',self.location.href);
 const URLS=ASSETS.map(p=>new URL(p,ROOT).href);
 async function valid(response,url){if(!response.ok||response.redirected||response.type==='opaque')return false;if(url.endsWith('/index.html'))return (await response.clone().text()).includes('name="flow-app" content="1"');if(url.endsWith('.js'))return /javascript/.test(response.headers.get('content-type')||'');if(url.endsWith('.css'))return /text\/css/.test(response.headers.get('content-type')||'');if(url.endsWith('.png'))return /image\/png/.test(response.headers.get('content-type')||'');if(url.endsWith('.svg'))return /image\/svg/.test(response.headers.get('content-type')||'');if(url.endsWith('.webmanifest')){try{return (await response.clone().json()).short_name==='Flow';}catch{return false;}}return true;}
