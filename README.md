@@ -4,15 +4,18 @@ An offline-first reading PWA for desktop, tablet, and mobile browsers. Flow offe
 
 ## Run the project
 
-Requires Node.js 22 or later. There are no third-party runtime or build dependencies and no package installation step.
+Requires Node.js 22 or later and pnpm 12.14.0, pinned in `package.json`. See the [pnpm installation guide](https://pnpm.io/installation) if pnpm is not installed. There are no third-party runtime or build dependencies.
 
 ```sh
-npm run build
-npm test
-npm start
+pnpm install --frozen-lockfile
+pnpm build
+pnpm test
+pnpm start
 ```
 
 Open the printed localhost address. Edit files in `src/`, then rebuild. Do not edit `dist/` directly. Service worker updates appear in an update banner; select **Update now** after changes are saved. The production version requires HTTPS; localhost is supported for development. Opening `index.html` via a file URL is not supported.
+
+Use pnpm for package management. Commit `pnpm-lock.yaml` when dependencies change; GitHub checks use the pinned pnpm version and a frozen lockfile to keep installations reproducible.
 
 ## Structure
 
